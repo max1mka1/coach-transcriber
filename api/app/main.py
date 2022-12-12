@@ -5,12 +5,14 @@ import telebot
 from collections import deque
 import whisper
 import torch
+from dotenv import load_dotenv
 
-# СЮДА НАДО ВПИСАТЬ ВАШ ТОКЕН ОТ ТЕЛЕГРАМ
 
-os.
 
-token = 'ВАШ_ТОКЕН'
+load_dotenv()
+
+# TELEGRAM Token needed
+token = os.getenv('BOT_TOKEN')
 
 q = deque()
 
@@ -33,11 +35,11 @@ class Capturing(list):
         del self._stringio    # free up some memory
         sys.stdout = self._stdout
 
-print('Загрузка...')
+print('Loading...')
 
 bot = telebot.TeleBot(token)
 
-print('Бот запущен и работает...')
+print('Bot configured and running...')
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
